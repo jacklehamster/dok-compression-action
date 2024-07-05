@@ -1,5 +1,12 @@
-const fs = require('fs');
-const path = require('path');
+// index.ts
+
+import * as fs from 'fs';
+import * as path from 'path';
+
+function stripComments(content) {
+  // Regular expression to remove comments (both single-line and multi-line)
+  return content.replace(/\/\/.*|\/\*[^]*?\*\//g, '');
+}
 
 async function run() {
   try {
@@ -14,8 +21,15 @@ async function run() {
     files.forEach(file => {
       if (file.endsWith('.json')) {
         const filePath = path.join(repoDir, file);
-        const fileData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-        consolidatedData.push(fileData);
+        try {
+          // Read the file content, strip comments, and parse JSON
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const cleanContent = stripComments(fileContent);
+          const fileData = JSON.parse(cleanContent);
+          consolidatedData.push(fileData);
+        } catch (error) {
+          console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
+        }
       }
     });
 
