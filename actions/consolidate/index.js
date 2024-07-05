@@ -12,7 +12,7 @@ async function run() {
     const outputFileName = 'consolidated.json';
     const outputFilePath = path.join(repoDir, outputFileName);
 
-    let consolidatedData = [];
+    let consolidatedData = {};
 
     // Iterate through the repository directory
     const files = fs.readdirSync(repoDir);
@@ -24,7 +24,7 @@ async function run() {
           const fileContent = fs.readFileSync(filePath, 'utf8');
           const cleanContent = stripComments(fileContent);
           const fileData = JSON.parse(cleanContent);
-          consolidatedData.push(fileData);
+          consolidatedData[filePath] = fileData;
         } catch (error) {
           console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
         }
