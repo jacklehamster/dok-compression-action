@@ -14,22 +14,33 @@ async function run() {
 
     let consolidatedData = {};
 
-    // Iterate through the repository directory
-    const files = fs.readdirSync(repoDir);
-    files.forEach(file => {
-      if (file.endsWith('.json') && file !== outputFileName && !file.endsWith('lock.json')) {
-        const filePath = path.join(repoDir, file);
-        try {
-          // Read the file content, strip comments, and parse JSON
-          const fileContent = fs.readFileSync(filePath, 'utf8');
-          const cleanContent = stripComments(fileContent);
-          const fileData = JSON.parse(cleanContent);
-          consolidatedData[file] = fileData;
-        } catch (error) {
-          console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
+    // Function to recursively traverse directories
+    function traverseDirectory(dir) {
+      const files = fs.readdirSync(dir);
+
+      files.forEach(file => {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
+
+        // Skip directories like node_modules
+        if (stat.isDirectory() && file !== 'node_modules') {
+          traverseDirectory(filePath);
+        } else if (file.endsWith('.json') && filePath !== outputFilePath && !file.endsWith('lock.json')) {
+          try {
+            // Read the file content, strip comments, and parse JSON
+            const fileContent = fs.readFileSync(filePath, 'utf8');
+            const cleanContent = stripComments(fileContent);
+            const fileData = JSON.parse(cleanContent);
+            consolidatedData[filePath] = fileData;
+          } catch (error) {
+            console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
+          }
         }
-      }
-    });
+      });
+    }
+
+    // Start traversing from the repository root directory
+    traverseDirectory(repoDir);
 
     // Write consolidated data to a single file
     fs.writeFileSync(outputFilePath, JSON.stringify(consolidatedData, null, 2));
