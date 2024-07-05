@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import dokCompressor from "dok-compression"
+import dokCompressor from "dok-compression";
 
-const {Compressor} = dokCompressor;
+const { Compressor } = dokCompressor;
 
 function stripComments(content) {
   // Regular expression to remove comments (both single-line and multi-line)
@@ -11,7 +11,7 @@ function stripComments(content) {
 
 async function run() {
   try {
-    const repoDir = process.env.GITHUB_WORKSPACE;
+    const repoDir = process.env.GITHUB_WORKSPACE || __dirname; // Use __dirname if GITHUB_WORKSPACE is not defined
     const outputFileName = 'consolidated.json';
     const outputFilePath = path.join(repoDir, outputFileName);
 
@@ -56,6 +56,7 @@ async function run() {
     console.log(">>", expanded.fileNames);
     console.log(">>", expanded.extract("/package.json"));
 
+    // Convert the dokbin (ArrayBuffer) to Buffer
     const buffer = Buffer.from(dokbin);
     fs.writeFileSync(path.join(repoDir, "consolidated.dokbin"), buffer);
 
