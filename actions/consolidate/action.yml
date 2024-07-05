@@ -1,0 +1,7 @@
+name: 'Consolidate JSON Files'
+description: 'Consolidates JSON files in the repository into a single file'
+inputs: {}
+outputs: {}
+runs:
+  using: 'node12'
+  main: 'index.js'

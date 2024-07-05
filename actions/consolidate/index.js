@@ -1,15 +1,13 @@
-// index.ts
-
-import * as fs from 'fs';
-import * as path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 async function run() {
   try {
-    const repoDir = process.env.GITHUB_WORKSPACE as string;
+    const repoDir = process.env.GITHUB_WORKSPACE;
     const outputFileName = 'consolidated.json';
     const outputFilePath = path.join(repoDir, outputFileName);
 
-    let consolidatedData: any[] = [];
+    let consolidatedData = [];
 
     // Iterate through the repository directory
     const files = fs.readdirSync(repoDir);
@@ -24,7 +22,7 @@ async function run() {
     // Write consolidated data to a single file
     fs.writeFileSync(outputFilePath, JSON.stringify(consolidatedData, null, 2));
     console.log(`Consolidated JSON files into ${outputFileName}`);
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
   }
