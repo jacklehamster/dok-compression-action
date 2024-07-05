@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import {Compressor} from "dok-compression"
 
 function stripComments(content) {
   // Regular expression to remove comments (both single-line and multi-line)
@@ -45,6 +46,16 @@ async function run() {
     // Write consolidated data to a single file
     fs.writeFileSync(outputFilePath, JSON.stringify(consolidatedData, null, 2));
     console.log(`Consolidated JSON files into ${outputFileName}`);
+
+    const compressor = new Compressor();
+    const dokbin = compressor.compress(consolidatedData);
+    
+    const expanded = compressor.expand(dokbin);
+    console.log(">>", expanded.fileNames);
+    console.log(">>", expanded.extract("/package.json"));
+
+    fs.writeFileSync(`${repoDir}/consolidated.dokbin`, dokbin);
+
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
