@@ -3,10 +3,10 @@ name: CI Workflow
 on:
   push:
     branches:
-      - main  # Adjust branch name if necessary
+      - main
   pull_request:
     branches:
-      - main  # Adjust branch name if necessary
+      - main
   workflow_dispatch:
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         run: npm install
 
       - name: Run consolidate JSON script
-        run: node actions/consolidate/index.js
+        run: node actions/consolidate/dist/index.js
 
       - name: Commit consolidated file
         run: |
@@ -36,6 +36,7 @@ jobs:
           # Add, commit, and push changes
           git add consolidated.json
           git commit -m "Add consolidated JSON file"
-          git push https://github.com/${{ github.repository }}.git HEAD:main
+          git remote set-url origin https://github.com/${{ github.repository }}.git
+          git push origin HEAD:main
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
