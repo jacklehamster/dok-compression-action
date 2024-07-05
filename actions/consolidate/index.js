@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import {Compressor} from "dok-compression"
+import dokCompressor from "dok-compression"
+
+const {Compressor} = dokCompressor;
 
 function stripComments(content) {
   // Regular expression to remove comments (both single-line and multi-line)
