@@ -14,7 +14,7 @@ async function run() {
     // Iterate through the repository directory
     const files = fs.readdirSync(repoDir);
     files.forEach(file => {
-      if (file.endsWith('.json')) {
+      if (file.endsWith('.json') && file !== outputFileName && file.endsWith('.lock.json')) {
         const filePath = path.join(repoDir, file);
         const fileData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
         consolidatedData.push(fileData);
