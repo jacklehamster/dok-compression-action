@@ -17,4 +17,4 @@ jobs:
 
       # Run the custom action
       - name: Consolidate JSON files
-        uses: ./actions/consolidate-json
+        uses: ./actions/consolidate
