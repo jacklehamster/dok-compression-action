@@ -31,7 +31,7 @@ async function run() {
             const fileContent = fs.readFileSync(filePath, 'utf8');
             const cleanContent = stripComments(fileContent);
             const fileData = JSON.parse(cleanContent);
-            consolidatedData[filePath] = fileData;
+            consolidatedData[filePath.split(repoDir)[1]] = fileData;
           } catch (error) {
             console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
           }
