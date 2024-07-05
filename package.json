@@ -1,11 +1,8 @@
 {
-  "name": "consolidate-json-action",
+  "name": "github-actions-consolidate-json",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc"
-  },
-  "dependencies": {
-    "json5": "^2.2.0"
   },
   "devDependencies": {
     "typescript": "^4.5.2"
