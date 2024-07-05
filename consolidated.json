@@ -1,0 +1,30 @@
+[
+  {
+    "name": "github-actions-consolidate-json",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "tsc"
+    },
+    "devDependencies": {
+      "typescript": "^4.5.2"
+    }
+  },
+  {
+    "compilerOptions": {
+      "lib": [
+        "ESNext"
+      ],
+      "target": "ESNext",
+      "module": "ESNext",
+      "moduleDetection": "force",
+      "jsx": "react-jsx",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "noEmit": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noFallthroughCasesInSwitch": true,
+      "forceConsistentCasingInFileNames": true
+    }
+  }
+]
