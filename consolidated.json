@@ -1,5 +1,5 @@
 {
-  "/home/runner/work/dok-compression-action/dok-compression-action/actions/consolidate/package.json": {
+  "/actions/consolidate/package.json": {
     "name": "consolidate-json-action",
     "version": "1.0.0",
     "type": "module",
@@ -10,7 +10,7 @@
       "typescript": "^4.5.2"
     }
   },
-  "/home/runner/work/dok-compression-action/dok-compression-action/package.json": {
+  "/package.json": {
     "name": "github-actions-consolidate-json",
     "version": "1.0.1",
     "scripts": {
@@ -20,7 +20,7 @@
       "typescript": "^4.5.2"
     }
   },
-  "/home/runner/work/dok-compression-action/dok-compression-action/tsconfig.json": {
+  "/tsconfig.json": {
     "compilerOptions": {
       "lib": [
         "ESNext"
