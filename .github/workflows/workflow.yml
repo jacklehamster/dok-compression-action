@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Display token
-        run: echo "GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}"
+        run: "echo \"GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\""
 
       - name: Checkout repository
         uses: actions/checkout@v2
