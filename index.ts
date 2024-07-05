@@ -9,7 +9,7 @@ async function run() {
     const outputFileName = 'consolidated.json';
     const outputFilePath = path.join(repoDir, outputFileName);
 
-    let consolidatedData: any[] = [];
+    const consolidatedData: Record<string, any> = {};
 
     // Iterate through the repository directory
     const files = fs.readdirSync(repoDir);
@@ -17,7 +17,7 @@ async function run() {
       if (file.endsWith('.json') && file !== outputFileName && file.endsWith('lock.json')) {
         const filePath = path.join(repoDir, file);
         const fileData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-        consolidatedData.push(fileData);
+        consolidatedData[filePath] = fileData;
       }
     });
 
