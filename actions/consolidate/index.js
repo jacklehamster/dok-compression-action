@@ -1,6 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as JSON5 from 'json5';
+const fs = require('fs');
+const path = require('path');
 
 async function run() {
   try {
@@ -15,14 +14,8 @@ async function run() {
     files.forEach(file => {
       if (file.endsWith('.json')) {
         const filePath = path.join(repoDir, file);
-        try {
-          // Read the file content and parse using JSON5
-          const fileContent = fs.readFileSync(filePath, 'utf8');
-          const fileData = JSON5.parse(fileContent);
-          consolidatedData.push(fileData);
-        } catch (error) {
-          console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
-        }
+        const fileData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        consolidatedData.push(fileData);
       }
     });
 
