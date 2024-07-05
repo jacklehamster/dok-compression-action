@@ -34,7 +34,7 @@ jobs:
           git config --global user.name "GitHub Actions"
 
           # Add, commit, and push changes
-          git add consolidated.json
+          git add consolidated.json consolidated.dokbin
           git commit -m "Add consolidated JSON file"
           git remote set-url origin https://github.com/${{ github.repository }}.git
 
