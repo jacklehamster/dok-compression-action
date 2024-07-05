@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Run consolidate JSON script
-        run: node actions/consolidate/dist/index.js
+        run: node actions/consolidate/index.js
 
       - name: Commit consolidated file
         run: |
