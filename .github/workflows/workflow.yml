@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Display token
+        run: echo "GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}"
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
