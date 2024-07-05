@@ -56,7 +56,8 @@ async function run() {
     console.log(">>", expanded.fileNames);
     console.log(">>", expanded.extract("/package.json"));
 
-    fs.writeFileSync(`${repoDir}/consolidated.dokbin`, dokbin);
+    const buffer = Buffer.from(dokbin);
+    fs.writeFileSync(`${repoDir}/consolidated.dokbin`, buffer);
 
   } catch (error) {
     console.error('Error:', error.message);
