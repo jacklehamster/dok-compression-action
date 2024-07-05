@@ -1,5 +1,3 @@
-// index.ts
-
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -19,7 +17,7 @@ async function run() {
     // Iterate through the repository directory
     const files = fs.readdirSync(repoDir);
     files.forEach(file => {
-      if (file.endsWith('.json')) {
+      if (file.endsWith('.json') && file !== outputFileName) {
         const filePath = path.join(repoDir, file);
         try {
           // Read the file content, strip comments, and parse JSON
