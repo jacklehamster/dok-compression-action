@@ -37,6 +37,9 @@ jobs:
           git add consolidated.json
           git commit -m "Add consolidated JSON file"
           git remote set-url origin https://github.com/${{ github.repository }}.git
-          git push origin HEAD:main
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true          
