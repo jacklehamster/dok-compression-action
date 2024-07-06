@@ -1,18 +1,8 @@
 {
-  "/actions/consolidate/package.json": {
-    "name": "consolidate-json-action",
-    "version": "1.0.0",
-    "type": "module",
-    "scripts": {
-      "build": "tsc"
-    },
-    "devDependencies": {
-      "typescript": "^4.5.2"
-    }
-  },
   "/package.json": {
     "name": "github-actions-consolidate-json",
     "version": "1.0.1",
+    "type": "module",
     "scripts": {
       "build": "tsc"
     },
