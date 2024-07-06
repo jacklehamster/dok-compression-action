@@ -3,3 +3,6 @@ description: 'Consolidates JSON files in the repository into a single file'
 runs:
   using: 'node12'
   main: 'index.js'
+branding:
+  color: 'green'
+  icon: 'package'
