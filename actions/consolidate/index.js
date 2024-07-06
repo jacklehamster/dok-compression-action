@@ -52,10 +52,6 @@ async function run() {
     const compressor = new Compressor();
     const dokbin = compressor.compress(consolidatedData);
     
-    const expanded = compressor.expand(dokbin);
-    console.log(">>", expanded.fileNames);
-    console.log(">>", expanded.extract("/package.json"));
-
     // Convert the dokbin (ArrayBuffer) to Buffer
     const buffer = Buffer.from(dokbin);
     fs.writeFileSync(path.join(repoDir, "consolidated.dokbin"), buffer);
