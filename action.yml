@@ -1,8 +1,12 @@
-name: 'Consolidate JSON Files'
-description: 'Consolidates JSON files in the repository into a single file'
+name: 'Consolidate JSON'
+description: 'A GitHub Action to consolidate JSON files'
+inputs:
+  token:
+    description: 'GitHub Token'
+    required: true
 runs:
-  using: 'node12'
-  main: 'actions/consolidate/index.js'
+  using: 'node16'
+  main: 'dist/index.js'
 branding:
   color: 'green'
   icon: 'package'
