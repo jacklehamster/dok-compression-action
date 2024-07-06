@@ -1,4 +1,7 @@
 {
+  "/dist/package.json": {
+    "type": "module"
+  },
   "/package.json": {
     "name": "github-actions-consolidate-json",
     "version": "1.0.5",
