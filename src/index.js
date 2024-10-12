@@ -32,7 +32,9 @@ async function run() {
           try {
             // Read the file content, strip comments, and parse JSON
             const fileContent = fs.readFileSync(filePath, 'utf8');
+            console.log("JSON", fileContent);
             const cleanContent = stripComments(fileContent);
+            console.log("JSON", cleanContent);
             const fileData = JSON.parse(cleanContent);
             consolidatedData[filePath.split(repoDir)[1]] = fileData;
           } catch (error) {
