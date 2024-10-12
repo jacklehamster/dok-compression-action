@@ -51,7 +51,9 @@ async function run() {
           try {
             // Read the file content, strip comments, and parse JSON
             const fileContent = external_fs_namespaceObject.readFileSync(filePath, 'utf8');
+            console.log("JSON-file", fileContent);
             const cleanContent = stripComments(fileContent);
+            console.log("JSON-clean", cleanContent);
             const fileData = JSON.parse(cleanContent);
             consolidatedData[filePath.split(repoDir)[1]] = fileData;
           } catch (error) {
@@ -82,4 +84,3 @@ async function run() {
 }
 
 run();
-
