@@ -1,57 +1,85 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import dokCompressor from "dok-compression";
-const { Compressor } = dokCompressor;
+import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "module";
+/******/ /* webpack/runtime/compat */
+/******/ 
+/******/ if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = new URL('.', import.meta.url).pathname.slice(import.meta.url.match(/^file:\/\/\/\w:/) ? 1 : 0, -1) + "/";
+/******/ 
+/************************************************************************/
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: external "fs"
+const external_fs_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
+;// CONCATENATED MODULE: external "path"
+const external_path_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("path");
+;// CONCATENATED MODULE: ./node_modules/dok-compression/dist/index.js
+var pJ=Object.create;var{defineProperty:Z0,getPrototypeOf:rJ,getOwnPropertyNames:lJ}=Object;var cJ=Object.prototype.hasOwnProperty;var Q1=(J,$,F)=>{F=J!=null?pJ(rJ(J)):{};const q=$||!J||!J.__esModule?Z0(F,"default",{value:J,enumerable:!0}):F;for(let X of lJ(J))if(!cJ.call(q,X))Z0(q,X,{get:()=>J[X],enumerable:!0});return q};var _=(J,$)=>()=>($||J(($={exports:{}}).exports,$),$.exports);var nJ=((J)=>typeof require!=="undefined"?require:typeof Proxy!=="undefined"?new Proxy(J,{get:($,F)=>(typeof require!=="undefined"?require:$)[F]}):J)(function(J){if(typeof require!=="undefined")return require.apply(this,arguments);throw Error('Dynamic require of "'+J+'" is not supported')});var G0=_((q8,Q0)=>{var U0=typeof self!=="undefined"?self:q8,c8=function(){function J(){this.fetch=!1,this.DOMException=U0.DOMException}return J.prototype=U0,new J}();(function(J){var $=function(F){var q={searchParams:"URLSearchParams"in J,iterable:"Symbol"in J&&"iterator"in Symbol,blob:"FileReader"in J&&"Blob"in J&&function(){try{return new Blob,!0}catch(B){return!1}}(),formData:"FormData"in J,arrayBuffer:"ArrayBuffer"in J};function X(B){return B&&DataView.prototype.isPrototypeOf(B)}if(q.arrayBuffer)var V=["[object Int8Array]","[object Uint8Array]","[object Uint8ClampedArray]","[object Int16Array]","[object Uint16Array]","[object Int32Array]","[object Uint32Array]","[object Float32Array]","[object Float64Array]"],Y=ArrayBuffer.isView||function(B){return B&&V.indexOf(Object.prototype.toString.call(B))>-1};function Z(B){if(typeof B!=="string")B=String(B);if(/[^a-z0-9\-#$%&'*+.^_`|~]/i.test(B))throw new TypeError("Invalid character in header field name");return B.toLowerCase()}function Q(B){if(typeof B!=="string")B=String(B);return B}function G(B){var W={next:function(){var O=B.shift();return{done:O===void 0,value:O}}};if(q.iterable)W[Symbol.iterator]=function(){return W};return W}function K(B){if(this.map={},B instanceof K)B.forEach(function(W,O){this.append(O,W)},this);else if(Array.isArray(B))B.forEach(function(W){this.append(W[0],W[1])},this);else if(B)Object.getOwnPropertyNames(B).forEach(function(W){this.append(W,B[W])},this)}if(K.prototype.append=function(B,W){B=Z(B),W=Q(W);var O=this.map[B];this.map[B]=O?O+", "+W:W},K.prototype.delete=function(B){delete this.map[Z(B)]},K.prototype.get=function(B){return B=Z(B),this.has(B)?this.map[B]:null},K.prototype.has=function(B){return this.map.hasOwnProperty(Z(B))},K.prototype.set=function(B,W){this.map[Z(B)]=Q(W)},K.prototype.forEach=function(B,W){for(var O in this.map)if(this.map.hasOwnProperty(O))B.call(W,this.map[O],O,this)},K.prototype.keys=function(){var B=[];return this.forEach(function(W,O){B.push(O)}),G(B)},K.prototype.values=function(){var B=[];return this.forEach(function(W){B.push(W)}),G(B)},K.prototype.entries=function(){var B=[];return this.forEach(function(W,O){B.push([O,W])}),G(B)},q.iterable)K.prototype[Symbol.iterator]=K.prototype.entries;function P(B){if(B.bodyUsed)return Promise.reject(new TypeError("Already read"));B.bodyUsed=!0}function j(B){return new Promise(function(W,O){B.onload=function(){W(B.result)},B.onerror=function(){O(B.error)}})}function z(B){var W=new FileReader,O=j(W);return W.readAsArrayBuffer(B),O}function w(B){var W=new FileReader,O=j(W);return W.readAsText(B),O}function E(B){var W=new Uint8Array(B),O=new Array(W.length);for(var A=0;A<W.length;A++)O[A]=String.fromCharCode(W[A]);return O.join("")}function S(B){if(B.slice)return B.slice(0);else{var W=new Uint8Array(B.byteLength);return W.set(new Uint8Array(B)),W.buffer}}function x(){if(this.bodyUsed=!1,this._initBody=function(B){if(this._bodyInit=B,!B)this._bodyText="";else if(typeof B==="string")this._bodyText=B;else if(q.blob&&Blob.prototype.isPrototypeOf(B))this._bodyBlob=B;else if(q.formData&&FormData.prototype.isPrototypeOf(B))this._bodyFormData=B;else if(q.searchParams&&URLSearchParams.prototype.isPrototypeOf(B))this._bodyText=B.toString();else if(q.arrayBuffer&&q.blob&&X(B))this._bodyArrayBuffer=S(B.buffer),this._bodyInit=new Blob([this._bodyArrayBuffer]);else if(q.arrayBuffer&&(ArrayBuffer.prototype.isPrototypeOf(B)||Y(B)))this._bodyArrayBuffer=S(B);else this._bodyText=B=Object.prototype.toString.call(B);if(!this.headers.get("content-type")){if(typeof B==="string")this.headers.set("content-type","text/plain;charset=UTF-8");else if(this._bodyBlob&&this._bodyBlob.type)this.headers.set("content-type",this._bodyBlob.type);else if(q.searchParams&&URLSearchParams.prototype.isPrototypeOf(B))this.headers.set("content-type","application/x-www-form-urlencoded;charset=UTF-8")}},q.blob)this.blob=function(){var B=P(this);if(B)return B;if(this._bodyBlob)return Promise.resolve(this._bodyBlob);else if(this._bodyArrayBuffer)return Promise.resolve(new Blob([this._bodyArrayBuffer]));else if(this._bodyFormData)throw new Error("could not read FormData body as blob");else return Promise.resolve(new Blob([this._bodyText]))},this.arrayBuffer=function(){if(this._bodyArrayBuffer)return P(this)||Promise.resolve(this._bodyArrayBuffer);else return this.blob().then(z)};if(this.text=function(){var B=P(this);if(B)return B;if(this._bodyBlob)return w(this._bodyBlob);else if(this._bodyArrayBuffer)return Promise.resolve(E(this._bodyArrayBuffer));else if(this._bodyFormData)throw new Error("could not read FormData body as text");else return Promise.resolve(this._bodyText)},q.formData)this.formData=function(){return this.text().then(C)};return this.json=function(){return this.text().then(JSON.parse)},this}var D=["DELETE","GET","HEAD","OPTIONS","POST","PUT"];function m(B){var W=B.toUpperCase();return D.indexOf(W)>-1?W:B}function M(B,W){W=W||{};var O=W.body;if(B instanceof M){if(B.bodyUsed)throw new TypeError("Already read");if(this.url=B.url,this.credentials=B.credentials,!W.headers)this.headers=new K(B.headers);if(this.method=B.method,this.mode=B.mode,this.signal=B.signal,!O&&B._bodyInit!=null)O=B._bodyInit,B.bodyUsed=!0}else this.url=String(B);if(this.credentials=W.credentials||this.credentials||"same-origin",W.headers||!this.headers)this.headers=new K(W.headers);if(this.method=m(W.method||this.method||"GET"),this.mode=W.mode||this.mode||null,this.signal=W.signal||this.signal,this.referrer=null,(this.method==="GET"||this.method==="HEAD")&&O)throw new TypeError("Body not allowed for GET or HEAD requests");this._initBody(O)}M.prototype.clone=function(){return new M(this,{body:this._bodyInit})};function C(B){var W=new FormData;return B.trim().split("&").forEach(function(O){if(O){var A=O.split("="),H=A.shift().replace(/\+/g," "),g=A.join("=").replace(/\+/g," ");W.append(decodeURIComponent(H),decodeURIComponent(g))}}),W}function R(B){var W=new K,O=B.replace(/\r?\n[\t ]+/g," ");return O.split(/\r?\n/).forEach(function(A){var H=A.split(":"),g=H.shift().trim();if(g){var y=H.join(":").trim();W.append(g,y)}}),W}x.call(M.prototype);function I(B,W){if(!W)W={};this.type="default",this.status=W.status===void 0?200:W.status,this.ok=this.status>=200&&this.status<300,this.statusText="statusText"in W?W.statusText:"OK",this.headers=new K(W.headers),this.url=W.url||"",this._initBody(B)}x.call(I.prototype),I.prototype.clone=function(){return new I(this._bodyInit,{status:this.status,statusText:this.statusText,headers:new K(this.headers),url:this.url})},I.error=function(){var B=new I(null,{status:0,statusText:""});return B.type="error",B};var L=[301,302,303,307,308];I.redirect=function(B,W){if(L.indexOf(W)===-1)throw new RangeError("Invalid status code");return new I(null,{status:W,headers:{location:B}})},F.DOMException=J.DOMException;try{new F.DOMException}catch(B){F.DOMException=function(W,O){this.message=W,this.name=O;var A=Error(W);this.stack=A.stack},F.DOMException.prototype=Object.create(Error.prototype),F.DOMException.prototype.constructor=F.DOMException}function T(B,W){return new Promise(function(O,A){var H=new M(B,W);if(H.signal&&H.signal.aborted)return A(new F.DOMException("Aborted","AbortError"));var g=new XMLHttpRequest;function y(){g.abort()}if(g.onload=function(){var h={status:g.status,statusText:g.statusText,headers:R(g.getAllResponseHeaders()||"")};h.url="responseURL"in g?g.responseURL:h.headers.get("X-Request-URL");var N="response"in g?g.response:g.responseText;O(new I(N,h))},g.onerror=function(){A(new TypeError("Network request failed"))},g.ontimeout=function(){A(new TypeError("Network request failed"))},g.onabort=function(){A(new F.DOMException("Aborted","AbortError"))},g.open(H.method,H.url,!0),H.credentials==="include")g.withCredentials=!0;else if(H.credentials==="omit")g.withCredentials=!1;if("responseType"in g&&q.blob)g.responseType="blob";if(H.headers.forEach(function(h,N){g.setRequestHeader(N,h)}),H.signal)H.signal.addEventListener("abort",y),g.onreadystatechange=function(){if(g.readyState===4)H.signal.removeEventListener("abort",y)};g.send(typeof H._bodyInit==="undefined"?null:H._bodyInit)})}if(T.polyfill=!0,!J.fetch)J.fetch=T,J.Headers=K,J.Request=M,J.Response=I;return F.Headers=K,F.Request=M,F.Response=I,F.fetch=T,Object.defineProperty(F,"__esModule",{value:!0}),F}({})})(c8);c8.fetch.ponyfill=!0;delete c8.fetch.polyfill;var A8=c8;q8=A8.fetch;q8.default=A8.fetch;q8.fetch=A8.fetch;q8.Headers=A8.Headers;q8.Request=A8.Request;q8.Response=A8.Response;Q0.exports=q8});var N8=_((eJ,B8)=>{var W0=function(J){return typeof J==="undefined"||J===null},oJ=function(J){return typeof J==="object"&&J!==null},dJ=function(J){if(Array.isArray(J))return J;else if(W0(J))return[];return[J]},iJ=function(J,$){var F,q,X,V;if($){V=Object.keys($);for(F=0,q=V.length;F<q;F+=1)X=V[F],J[X]=$[X]}return J},sJ=function(J,$){var F="",q;for(q=0;q<$;q+=1)F+=J;return F},aJ=function(J){return J===0&&Number.NEGATIVE_INFINITY===1/J};eJ.isNothing=W0;eJ.isObject=oJ;eJ.toArray=dJ;eJ.repeat=sJ;eJ.isNegativeZero=aJ;eJ.extend=iJ});var z8=_((q3,B0)=>{var K0=function(J,$){var F="",q=J.reason||"(unknown reason)";if(!J.mark)return q;if(J.mark.name)F+='in "'+J.mark.name+'" ';if(F+="("+(J.mark.line+1)+":"+(J.mark.column+1)+")",!$&&J.mark.snippet)F+="\n\n"+J.mark.snippet;return q+" "+F},v8=fu
+`:J===118?"\v":J===102?"\f":J===114?`\r`:J===101?"\x1B":J===32?" ":J===34?'"':J===47?"/":J===92?"\\":J===78?"\x85":J===95?"\xA0":J===76?"\u2028":J===80?"\u2029":""},P$=function(J){if(J<=65535)return String.fromCharCode(J);return String.fromCharCode((J-65536>>10)+55296,(J-65536&1023)+56320)},H$=function(J,$){this.input=J,this.filename=$.filename||null,this.schema=$.schema||Q$,this.onWarning=$.onWarning||null,this.legacy=$.legacy||!1,this.json=$.json||!1,this.listener=$.listener||null,this.implicitTypes=this.schema.compiledImplicit,this.typeMap=this.schema.compiledTypeMap,this.length=J.length,this.position=0,this.line=0,this.lineStart=0,this.lineIndent=0,this.firstTabInLine=-1,this.documents=[]},e0=function(J,$){var F={name:J.filename,buffer:J.input.slice(0,-1),position:J.position,line:J.line,column:J.position-J.lineStart};return F.snippet=U$(F),new c0($,F)},v=function(J,$){throw e0(J,$)},s8=function(J,$){if(J.onWarning)J.onWarning.call(null,e0(J,$))},G8=function(J,$,F,q){var X,V,Y,Z;if($<F){if(Z=J.input.slice($,F),q){for(X=0,V=Z.length;X<V;X+=1)if(Y=Z.charCodeAt(X),!(Y===9||32<=Y&&Y<=1114111))v(J,"expected valid JSON character")}else if(W$.test(Z))v(J,"the stream contains non-printable characters");J.result+=Z}},r0=function(J,$,F,q){var X,V,Y,Z;if(!M8.isObject(F))v(J,"cannot merge mappings; the provided source object is unacceptable");X=Object.keys(F);for(Y=0,Z=X.length;Y<Z;Y+=1)if(V=X[Y],!W8.call($,V))$[V]=F[V],q[V]=!0},C8=function(J,$,F,q,X,V,Y,Z,Q){var G,K;if(Array.isArray(X)){X=Array.prototype.slice.call(X);for(G=0,K=X.length;G<K;G+=1){if(Array.isArray(X[G]))v(J,"nested arrays are not supported inside keys");if(typeof X==="object"&&u0(X[G])==="[object Object]")X[G]="[object Object]"}}if(typeof X==="object"&&u0(X)==="[object Object]")X="[object Object]";if(X=String(X),$===null)$={};if(q==="tag:yaml.org,2002:merge")if(Array.isArray(V))for(G=0,K=V.length;G<K;G+=1)r0(J,$,V[G],F);else r0(J,$,V,F);else{if(!J.json&&!W8.call(F,X)&&W8.call($,X))J.line=Y||J.line,J.lineStart=Z||J.lineStart,J.position=Q||J.position,v(J,"duplicated mapping key");if(X==="__proto__")Object.defineProperty($,X,{configurable:!0,enumerable:!0,writable:!0,value:V});else $[X]=V;delete F[X]}return $},g1=function(J){var $=J.input.charCodeAt(J.position);if($===10)J.position++;else if($===13){if(J.position++,J.input.charCodeAt(J.position)===10)J.position++}else v(J,"a line break is expected");J.line+=1,J.lineStart=J.position,J.firstTabInLine=-1},f=function(J,$,F){var q=0,X=J.input.charCodeAt(J.position);while(X!==0){while(R8(X)){if(X===9&&J.firstTabInLine===-1)J.firstTabInLine=J.position;X=J.input.charCodeAt(++J.position)}if($&&X===35)do X=J.input.charCodeAt(++J.position);while(X!==10&&X!==13&&X!==0);if($8(X)){g1(J),X=J.input.charCodeAt(J.position),q++,J.lineIndent=0;while(X===32)J.lineIndent++,X=J.input.charCodeAt(++J.position)}else break}if(F!==-1&&q!==0&&J.lineIndent<F)s8(J,"deficient indentation");return q},a8=function(J){var $=J.position,F;if(F=J.input.charCodeAt($),(F===45||F===46)&&F===J.input.charCodeAt($+1)&&F===J.input.charCodeAt($+2)){if($+=3,F=J.input.charCodeAt($),F===0||n(F))return!0}return!1},x1=function(J,$){if($===1)J.result+=" ";else if($>1)J.result+=M8.repeat("\n",$-1)},A$=function(J,$,F){var q,X,V,Y,Z,Q,G,K,P=J.kind,j=J.result,z;if(z=J.input.charCodeAt(J.position),n(z)||j8(z)||z===35||z===38||z===42||z===33||z===124||z===62||z===39||z===34||z===37||z===64||z===96)return!1;if(z===63||z===45){if(X=J.input.charCodeAt(J.position+1),n(X)||F&&j8(X))return!1}J.kind="scalar",J.result="",V=Y=J.position,Z=!1;while(z!==0){if(z===58){if(X=J.input.charCodeAt(J.position+1),n(X)||F&&j8(X))break}else if(z===35){if(q=J.input.charCodeAt(J.position-1),n(q))break}else if(J.position===J.lineStart&&a8(J)||F&&j8(z))break;else if($8(z))if(Q=J.line,G=J.lineStart,K=J.lineIndent,f(J,!1,-1),J.lineIndent>=$){Z=!0,z=J.input.charCodeAt(J.position);continue}else{J.position=Y,J.line=Q,J.lineStart=G,J.lineIndent=K;break}if(Z)G8(J,V,Y,!1),x1(J,J.line-Q),V=Y=J.position,Z=!1;if(!R8(z))Y=J.position+1;z=J.input.charCodeAt(++J.position)}if(G8(J,V,Y,!1),J.result)return!0;return J.kind=P,J.result=j,!1},N$=function(J,$){var F,q,X;if(F=J.input.charCodeAt(J.position),F!==39)return!1;J.kind="scalar",J.result="",J.position++,q=X=J.position;while((F=J.input.charCodeAt(J.position))!==0)if(F===39)if(G8(J,q,J.position,!0),F=J.input.charCodeAt(++J.position),F===39)q=J.position,J.position++,X=J.position;else return!0;else if($8(F))G8(J,q,X,!0),x1(J,f(J,!1,$)),q=X=J.position;else if(J.position===J.lineStart&&a8(J))v(J,"unexpected end of the document within a single quoted scalar");else J.position++,X=J.position;v(J,"unexpected end of the stream within a single quoted scalar")},z$=function(J,$){var F,q,X,V,Y,Z;if(Z=J.input.charCodeAt(J.position),Z!==34)return!1;J.kind="scalar",J.result="",J.position++,F=q=J.position;while((Z=J.input.charCodeAt(J.position))!==0)if(Z===34)return G8(J,F,J.position,!0),J.position++,!0;else if(Z===92){if(G8(J,F,J.position,!0),Z=J.input.charCodeAt(++J.position),$8(Z))f(J,!1,$);else if(Z<256&&s0[Z])J.result+=a0[Z],J.position++;else if((Y=M$(Z))>0){X=Y,V=0;for(;X>0;X--)if(Z=J.input.charCodeAt(++J.position),(Y=O$(Z))>=0)V=(V<<4)+Y;else v(J,"expected hexadecimal character");J.result+=P$(V),J.position++}else v(J,"unknown escape sequence");F=q=J.position}else if($8(Z))G8(J,F,q,!0),x1(J,f(J,!1,$)),F=q=J.position;else if(J.position===J.lineStart&&a8(J))v(J,"unexpected end of the document within a double quoted scalar");else J.position++,q=J.position;v(J,"unexpected end of the stream within a double quoted scalar")},j$=function(J,$){var F=!0,q,X,V,Y=J.tag,Z,Q=J.anchor,G,K,P,j,z,w=Object.create(null),E,S,x,D;if(D=J.input.charCodeAt(J.position),D===91)K=93,z=!1,Z=[];else if(D===123)K=125,z=!0,Z={};else return!1;if(J.anchor!==null)J.anchorMap[J.anchor]=Z;D=J.input.charCodeAt(++J.position);while(D!==0){if(f(J,!0,$),D=J.input.charCodeAt(J.position),D===K)return J.position++,J.tag=Y,J.anchor=Q,J.kind=z?"mapping":"sequence",J.result=Z,!0;else if(!F)v(J,"missed comma between flow collection entries");else if(D===44)v(J,"expected the node content, but found ','");if(S=E=x=null,P=j=!1,D===63){if(G=J.input.charCodeAt(J.position+1),n(G))P=j=!0,J.position++,f(J,!0,$)}if(q=J.line,X=J.lineStart,V=J.position,L8(J,$,d8,!1,!0),S=J.tag,E=J.result,f(J,!0,$),D=J.input.charCodeAt(J.position),(j||J.line===q)&&D===58)P=!0,D=J.input.charCodeAt(++J.position),f(J,!0,$),L8(J,$,d8,!1,!0),x=J.result;if(z)C8(J,Z,w,S,E,x,q,X,V);else if(P)Z.push(C8(J,null,w,S,E,x,q,X,V));else Z.push(E);if(f(J,!0,$),D=J.input.charCodeAt(J.position),D===44)F=!0,D=J.input.charCodeAt(++J.position);else F=!1}v(J,"unexpected end of the stream within a flow collection")},C$=function(J,$){var F,q,X=D1,V=!1,Y=!1,Z=$,Q=0,G=!1,K,P;if(P=J.input.charCodeAt(J.position),P===124)q=!1;else if(P===62)q=!0;else return!1;J.kind="scalar",J.result="";while(P!==0)if(P=J.input.charCodeAt(++J.position),P===43||P===45)if(D1===X)X=P===43?m0:G$;else v(J,"repeat of a chomping mode identifier");else if((K=R$(P))>=0)if(K===0)v(J,"bad explicit indentation width of a block scalar; it cannot be less than one");else if(!Y)Z=$+K-1,Y=!0;else v(J,"repeat of an indentation width identifier");else break;if(R8(P)){do P=J.input.charCodeAt(++J.position);while(R8(P));if(P===35)do P=J.input.charCodeAt(++J.position);while(!$8(P)&&P!==0)}while(P!==0){g1(J),J.lineIndent=0,P=J.input.charCodeAt(J.position);while((!Y||J.lineIndent<Z)&&P===32)J.lineIndent++,P=J.input.charCodeAt(++J.position);if(!Y&&J.lineIndent>Z)Z=J.lineIndent;if($8(P)){Q++;continue}if(J.lineIndent<Z){if(X===m0)J.result+=M8.repeat("\n",V?1+Q:Q);else if(X===D1){if(V)J.result+="\n"}break}if(q)if(R8(P))G=!0,J.result+=M8.repeat("\n",V?1+Q:Q);else if(G)G=!1,J.result+=M8.repeat("\n",Q+1);else if(Q===0){if(V)J.result+=" "}else J.result+=M8.repeat("\n",Q);else J.result+=M8.repeat("\n",V?1+Q:Q);V=!0,Y=!0,Q=0,F=J.position;while(!$8(P)&&P!==0)P=J.input.charCodeAt(++J.position);G8(J,F,J.position,!1)}return!0},l0=function(J,$){var F,q=J.tag,X=J.anchor,V=[],Y,Z=!1,Q;if(J.firstTabInLine!==-1)return!1;if(J.anchor!==null)J.anchorMap[J.anchor]=V;Q=J.input.charCodeAt(J.position);while(Q!==0){if(J.firstTabInLine!==-1)J.position=J.firstTabInLine,v(J,"tab characters must not be used in indentation");if(Q!==45)break;if(Y=J.input.charCodeAt(J.position+1),!n(Y))break;if(Z=!0,J.position++,f(J,!0,-1)){if(J.lineIndent<=$){V.push(null),Q=J.input.charCodeAt(J.position);continue}}if(F=J.line,L8(J,$,o0,!1,!0),V.push(J.result),f(J,!0,-1),Q=J.input.charCodeAt(J.position),(J.line===F||J.lineIndent>$)&&Q!==0)v(J,"bad indentation of a sequence entry");else if(J.lineIndent<$)break}if(Z)return J.tag=q,J.anchor=X,J.kind="sequence",J.result=V,!0;return!1},L$=function(J,$,F){var q,X,V,Y,Z,Q,G=J.tag,K=J.anchor,P={},j=Object.create(null),z=null,w=null,E=null,S=!1,x=!1,D;if(J.firstTabInLine!==-1)return!1;if(J.anchor!==null)J.anchorMap[J.anchor]=P;D=J.input.charCodeAt(J.position);while(D!==0){if(!S&&J.firstTabInLine!==-1)J.position=J.firstTabInLine,v(J,"tab characters must not be used in indentation");if(q=J.input.charCodeAt(J.position+1),V=J.line,(D===63||D===58)&&n(q)){if(D===63){if(S)C8(J,P,j,z,w,null,Y,Z,Q),z=w=E=null;x=!0,S=!0,X=!0}else if(S)S=!1,X=!0;else v(J,"incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line");J.position+=1,D=q}else{if(Y=J.line,Z=J.lineStart,Q=J.position,!L8(J,F,n0,!1,!0))break;if(J.line===V){D=J.input.charCodeAt(J.position);while(R8(D))D=J.input.charCodeAt(++J.position);if(D===58){if(D=J.input.charCodeAt(++J.position),!n(D))v(J,"a whitespace character is expected after the key-value separator within a block mapping");if(S)C8(J,P,j,z,w,null,Y,Z,Q),z=w=E=null;x=!0,S=!1,X=!1,z=J.tag,w=J.result}else if(x)v(J,"can not read an implicit mapping pair; a colon is missed");else return J.tag=G,J.anchor=K,!0}else if(x)v(J,"can not read a block mapping entry; a multiline key may not be an implicit key");else return J.tag=G,J.anchor=K,!0}if(J.line===V||J.lineIndent>$){if(S)Y=J.line,
+
+//# debugId=53F25D3E09B43F2664756e2164756e21
+
+;// CONCATENATED MODULE: ./actions/consolidate/index.js
+
+
+
+
+const { Compressor } = J5;
+
 function stripComments(content) {
-    // Regular expression to remove comments (both single-line and multi-line)
-    return content.replace(/\/\/.*|\/\*[^]*?\*\//g, '');
+  // Regular expression to remove comments (both single-line and multi-line)
+  return content.replace(/\/\/.*|\/\*[^]*?\*\//g, '');
 }
+
 async function run() {
-    try {
-        const repoDir = process.env.GITHUB_WORKSPACE || __dirname; // Use __dirname if GITHUB_WORKSPACE is not defined
-        const outputFileName = 'consolidated.json';
-        const outputFilePath = path.join(repoDir, outputFileName);
-        let consolidatedData = {};
-        // Function to recursively traverse directories
-        function traverseDirectory(dir) {
-            const files = fs.readdirSync(dir);
-            files.forEach(file => {
-                const filePath = path.join(dir, file);
-                const stat = fs.statSync(filePath);
-                // Skip directories like node_modules
-                if (stat.isDirectory() && file !== 'node_modules') {
-                    traverseDirectory(filePath);
-                }
-                else if (file.endsWith('.json') && filePath !== outputFilePath && !file.endsWith('lock.json')) {
-                    try {
-                        // Read the file content, strip comments, and parse JSON
-                        const fileContent = fs.readFileSync(filePath, 'utf8');
-                        console.info("JSON", fileContent);
-                        const cleanContent = stripComments(fileContent);
-                        console.info("JSON", cleanContent);
-                        const fileData = JSON.parse(cleanContent);
-                        consolidatedData[filePath.split(repoDir)[1]] = fileData;
-                    }
-                    catch (error) {
-                        console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
-                    }
-                }
-            });
+  try {
+    const repoDir = process.env.GITHUB_WORKSPACE || __dirname; // Use __dirname if GITHUB_WORKSPACE is not defined
+    const outputFileName = 'consolidated.json';
+    const outputFilePath = external_path_namespaceObject.join(repoDir, outputFileName);
+
+    let consolidatedData = {};
+
+    // Function to recursively traverse directories
+    function traverseDirectory(dir) {
+      const files = external_fs_namespaceObject.readdirSync(dir);
+
+      files.forEach(file => {
+        const filePath = external_path_namespaceObject.join(dir, file);
+        const stat = external_fs_namespaceObject.statSync(filePath);
+
+        // Skip directories like node_modules
+        if (stat.isDirectory() && file !== 'node_modules') {
+          traverseDirectory(filePath);
+        } else if (file.endsWith('.json') && filePath !== outputFilePath && !file.endsWith('lock.json')) {
+          try {
+            // Read the file content, strip comments, and parse JSON
+            const fileContent = external_fs_namespaceObject.readFileSync(filePath, 'utf8');
+            const cleanContent = stripComments(fileContent);
+            const fileData = JSON.parse(cleanContent);
+            consolidatedData[filePath.split(repoDir)[1]] = fileData;
+          } catch (error) {
+            console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
+          }
         }
-        // Start traversing from the repository root directory
-        traverseDirectory(repoDir);
-        // Write consolidated data to a single file
-        fs.writeFileSync(outputFilePath, JSON.stringify(consolidatedData, null, 2));
-        console.log(`Consolidated JSON files into ${outputFileName}`);
-        const compressor = new Compressor();
-        const dokbin = compressor.compress(consolidatedData);
-        // Convert the dokbin (ArrayBuffer) to Buffer
-        const buffer = Buffer.from(dokbin);
-        fs.writeFileSync(path.join(repoDir, "consolidated.dokbin"), buffer);
+      });
     }
-    catch (error) {
-        console.error('Error:', error.message);
-        process.exit(1);
-    }
+
+    // Start traversing from the repository root directory
+    traverseDirectory(repoDir);
+
+    // Write consolidated data to a single file
+    external_fs_namespaceObject.writeFileSync(outputFilePath, JSON.stringify(consolidatedData, null, 2));
+    console.log(`Consolidated JSON files into ${outputFileName}`);
+
+    const compressor = new Compressor();
+    const dokbin = compressor.compress(consolidatedData);
+    
+    // Convert the dokbin (ArrayBuffer) to Buffer
+    const buffer = Buffer.from(dokbin);
+    external_fs_namespaceObject.writeFileSync(external_path_namespaceObject.join(repoDir, "consolidated.dokbin"), buffer);
+
+  } catch (error) {
+    console.error('Error:', error.message);
+    process.exit(1);
+  }
 }
+
 run();
+
