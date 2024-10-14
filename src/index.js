@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import dokCompressor from "dok-compression";
+import { parse } from "comment-json";
 
 const { Compressor } = dokCompressor;
 
@@ -37,10 +38,7 @@ async function run() {
           try {
             // Read the file content, strip comments, and parse JSON
             const fileContent = fs.readFileSync(filePath, "utf8");
-            console.info("JSON", fileContent);
-            const cleanContent = stripComments(fileContent);
-            console.info("JSON", cleanContent);
-            const fileData = JSON.parse(cleanContent);
+            const fileData = parse(fileContent);
             consolidatedData[filePath.split(repoDir)[1]] = fileData;
           } catch (error) {
             console.error(
