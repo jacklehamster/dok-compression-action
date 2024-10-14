@@ -3,9 +3,10 @@
   "version": "1.0.5",
   "type": "module",
   "scripts": {
-    "build": "tsc"
+    "build": "bun i && rm -rf dist/*.* && bun run bundler/bundler.ts"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.11",
     "typescript": "^4.5.2"
   },
   "dependencies": {

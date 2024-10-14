@@ -1,18 +1,19 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 import dokCompressor from "dok-compression";
 
 const { Compressor } = dokCompressor;
 
 function stripComments(content) {
   // Regular expression to remove comments (both single-line and multi-line)
-  return content.replace(/\/\/.*|\/\*[^]*?\*\//g, '');
+  return content.replace(/\/\/.*|\/\*[^]*?\*\//g, "");
 }
 
 async function run() {
   try {
-    const repoDir = process.env.GITHUB_WORKSPACE || __dirname; // Use __dirname if GITHUB_WORKSPACE is not defined
-    const outputFileName = 'consolidated.json';
+    const repoDir = process.env.GITHUB_WORKSPACE || process.cwd();
+    console.log(repoDir);
+    const outputFileName = "consolidated.json";
     const outputFilePath = path.join(repoDir, outputFileName);
 
     let consolidatedData = {};
@@ -21,24 +22,30 @@ async function run() {
     function traverseDirectory(dir) {
       const files = fs.readdirSync(dir);
 
-      files.forEach(file => {
+      files.forEach((file) => {
         const filePath = path.join(dir, file);
         const stat = fs.statSync(filePath);
 
         // Skip directories like node_modules
-        if (stat.isDirectory() && file !== 'node_modules') {
+        if (stat.isDirectory() && file !== "node_modules") {
           traverseDirectory(filePath);
-        } else if (file.endsWith('.json') && filePath !== outputFilePath && !file.endsWith('lock.json')) {
+        } else if (
+          file.endsWith(".json") &&
+          filePath !== outputFilePath &&
+          !file.endsWith("lock.json")
+        ) {
           try {
             // Read the file content, strip comments, and parse JSON
-            const fileContent = fs.readFileSync(filePath, 'utf8');
+            const fileContent = fs.readFileSync(filePath, "utf8");
             console.info("JSON", fileContent);
             const cleanContent = stripComments(fileContent);
             console.info("JSON", cleanContent);
             const fileData = JSON.parse(cleanContent);
             consolidatedData[filePath.split(repoDir)[1]] = fileData;
           } catch (error) {
-            console.error(`Error parsing JSON file ${filePath}: ${error.message}`);
+            console.error(
+              `Error parsing JSON file ${filePath}: ${error.message}`
+            );
           }
         }
       });
@@ -53,13 +60,12 @@ async function run() {
 
     const compressor = new Compressor();
     const dokbin = compressor.compress(consolidatedData);
-    
+
     // Convert the dokbin (ArrayBuffer) to Buffer
     const buffer = Buffer.from(dokbin);
     fs.writeFileSync(path.join(repoDir, "consolidated.dokbin"), buffer);
-
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error("Error:", error.message);
     process.exit(1);
   }
 }
